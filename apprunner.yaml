@@ -3,11 +3,11 @@ runtime: python3
 build:
   commands:
     build:
-      - pip install -r requirements.txt
+      - pip install --upgrade pip
+      - pip install "urllib3<2.0.0"
+      - pip install torch==2.1.0+cpu --index-url https://download.pytorch.org/whl/cpu
+      - pip install fastapi uvicorn sentence-transformers scikit-learn
 run:
-  command: python -c "import uvicorn; import test_app; uvicorn.run(test_app.app, host='0.0.0.0', port=8000)"
+  command: uvicorn aplicacion_MiniLM:app --host 0.0.0.0 --port 8000
   network:
     port: 8000
-  env:
-    - name: PYTHONPATH
-      value: /app
