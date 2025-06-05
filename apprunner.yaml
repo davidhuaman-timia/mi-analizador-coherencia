@@ -3,10 +3,8 @@ runtime: python3
 build:
   commands:
     build:
-      - pip install --upgrade pip
-      - pip install "urllib3<2.0.0"
-      - pip install torch==2.1.0+cpu --index-url https://download.pytorch.org/whl/cpu
-      - pip install fastapi uvicorn sentence-transformers scikit-learn
+      - pip install "urllib3<2.0.0" "requests<2.29.0"
+      - pip install fastapi uvicorn "sentence-transformers==2.2.2" scikit-learn
 run:
   command: uvicorn aplicacion_MiniLM:app --host 0.0.0.0 --port 8000
   network:
