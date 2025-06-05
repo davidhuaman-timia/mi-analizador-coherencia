@@ -5,6 +5,9 @@ build:
     build:
       - pip install -r requirements.txt
 run:
-  command: python -m uvicorn aplicacion_MiniLM:app --host 0.0.0.0 --port 8000 --workers 1
+  command: python -c "import uvicorn; import test_app; uvicorn.run(test_app.app, host='0.0.0.0', port=8000)"
   network:
     port: 8000
+  env:
+    - name: PYTHONPATH
+      value: /app
